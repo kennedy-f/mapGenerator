@@ -1,26 +1,43 @@
 $(document).ready(function () {
     console.log('Digite generateMap');
     console.log('Está function que esta a preencher a matriz')
-    show(); 
+    showTypes(); 
 })
 
 
+//Types 
+var types = ['florest', 'mountains', 'plains', 'cities', 'water']; 
 
-var types = ['florest', 'mountains', 'plains', 'cities', '']; 
-
-function show() {
-    types.map(dado => $("<p>" + dado + "</p>").appendTo($("#matriz")));
+function showTypes() {
+    types.map(dado => $("<label>" + dado + ",  </label><span> </span>" ).appendTo($("#selectedTypes")));
 }
 
-function deleteMap() {
-    $("#matriz").remove();
+function deleteTypes() {
+    $("#selectedTypes").remove();
 }
 
-function createMap() {
-    $("<div id='matriz' class='col-4'></div>").appendTo($("#mapGenerator"));
-    show();
+function createTypes() {
+    $("<div id='selectedTypes' class='col-4'></div>").appendTo($("#types"));
+    showTypes();
 }
 
+function addGroundType(event) {
+    event.preventDefault();
+    var defaultTypes = ['florest', 'mountains', 'plains', 'cities', 'water'];
+    //to-do criar função para o input aceitar apenas letras. 
+    var userType = $('#groundType').val().toLowerCase();
+    for (var i = 0; i < defaultTypes.length; i++) {
+        if (userType === defaultTypes[i]) {
+            types.push(defaultTypes[i]);
+            deleteTypes();
+            createTypes();
+            return
+        }
+    }
+
+}
+
+//Map 
 function createArray2D(rows){
     var arr = [];
     for (var i = 0; i < rows; i++) {
@@ -34,29 +51,23 @@ function generateMap(size){
     var matriz = createArray2D(size); 
     for (var i = 0 ; i< size; i++){ 
         for(var j = 0; j < size; j++ ){ 
-            matriz[i][j] = types[Math.floor(Math.random() * types.length - 1)]; 
+            matriz[i][j] = types[Math.floor(Math.random() * types.length)]; 
         }
     }
     return matriz; 
 }
-
-
-function addGroundType(event){ 
-    event.preventDefault(); 
-    var defaultTypes = ['cities', 'plain', 'florest', 'village', 'mountais', 'water']; 
-    //to-do criar função para o input aceitar apenas letras. 
-    var userType = $('#groundType').val().toLowerCase(); 
-    for (var i = 0; i < defaultTypes.length; i++) { 
-        if (userType === defaultTypes[i]) {
-            types.push(defaultTypes[i]); 
-            deleteMap(); 
-            createMap();
-            return
+var globalMap;
+function showMap(mapX, mapY){ //to-do incrementar funcao de tamanho X e Y no mapa
+    var map = generateMap(mapX);         
+    globalMap = map; 
+    for (var i = 0; i < mapX; i++) { 
+        for (var j = 0; j < mapX; j++ ){             
+            $('<label >' + map[i][j]  + '</lavel><span>, <span>').appendTo($('#map'));
         }
+        $('</br>').appendTo($('#map')); 
     }
-    
+
+
 }
 
-function randomType() { 
-    //to-do adicionar tipos de terreno aqui 
-}
+
