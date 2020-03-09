@@ -56,10 +56,9 @@ function generateMap(size){
     }
     return matriz; 
 }
-var globalMap;
+
 function showMap(mapX, mapY){ //to-do incrementar funcao de tamanho X e Y no mapa
     var map = generateMap(mapX);         
-    globalMap = map; 
     for (var i = 0; i < mapX; i++) { 
         for (var j = 0; j < mapX; j++ ){             
             $('<label >' + map[i][j]  + '</lavel><span>, <span>').appendTo($('#map'));
