@@ -1,5 +1,10 @@
-console.log('Digite generateMap'); 
-console.log('Está function que esta a preencher a matriz')
+$(document).ready(function () {
+    console.log('Digite generateMap');
+    console.log('Está function que esta a preencher a matriz')
+    types.map(dado => $("<p>" + dado + "</p>").insertAfter($("#matriz")));
+})
+
+
 
 var types = ['florest', 'mountains', 'plains']; 
 
@@ -24,9 +29,4 @@ function generateMap(size){
     return matriz; 
 }
 
-
-//se quiser mostrar em tela só descomentar isso 
-$(document).ready(function(){
-    types.map(dado => $("<p>"+ dado +  "</p>").insertAfter($("#matriz"))); 
-})
 
