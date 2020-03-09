@@ -19,8 +19,17 @@
 
 </head>
 <body>
-    <div id="matriz">
+    <div id="mapGenerator">
+        <form onsubmit="addGroundType(event)">
+            <div class="form-group col-2 ">
+                <input class="form-control mb-2" name="groundType" id="groundType" placeholder="tipos de terreno"type="text">
+                <button class="btn btn-primary" id="btnGroundType"> adicionar </button>
+            </div>
+        </form>
 
+        <div class="col 4"id="matriz">
+            
+        </div>
     </div>
 </body>
 </html>
