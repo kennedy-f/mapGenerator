@@ -57,7 +57,7 @@ function generateMap(size){
     return matriz; 
 }
 
-//kennedy corno
+//kennedy corno 2.0
 function generateContinent(matriz){
     //usando drunkenwalker
     var y=Math.random(),x = Math.random();
