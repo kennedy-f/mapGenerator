@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapGenerator</title>
+
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+    
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- Jquery -->
+    <script src="/js/jquery-3.4.1.min.js"></script>
+     
+    <script src="/js/main.js"></script>
+
+</head>
+<body>
+    <div id="mapGenerator">
+        <form onsubmit="addGroundType(event)">
+            <div class="form-group col-2 ">
+                <input class="form-control mb-2" name="groundType" id="groundType" placeholder="tipos de terreno"type="text">
+                <button class="btn btn-primary" id="btnGroundType"> adicionar </button>
+            </div>
+        </form>
+        
+        
+
+        <div class="col 4"id="types">
+            <h4> Tipos escolhidos</h4>
+            <div id="selectedTypes" class="col-4">
+
+            </div>
+        </div>
+        <div id="mapGen" class="col">
+            <h3> Mapa</h3>
+            <button onclick="showMap(10)" class="btn btn-secondary">Gerar mapa 10 x 10</button>
+            <div id="map" class="col-8">
+    
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
