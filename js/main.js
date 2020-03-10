@@ -6,7 +6,7 @@ $(document).ready(function () {
 
 
 //Types 
-var types = ['forest', 'mountain', 'plain', 'citie', 'water','cave','desert','lava']; 
+var types = ['forest', 'mountain', 'plain', 'citie', 'water','cave','desert','lava'];
 
 function showTypes() {
     types.map(dado => $("<label>" + dado + ",  </label><span> </span>" ).appendTo($("#selectedTypes")));
