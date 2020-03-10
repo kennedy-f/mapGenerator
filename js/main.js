@@ -59,27 +59,53 @@ function generateMap(size) {
 
 function generateContinent(matriz) {
     //usando drunkenwalker
-    var y = Math.random(), x = Math.random();
+    var y = Math.floor(Math.random() * 10);
+    var x = Math.floor(Math.random() * 10); 
+    var count = 0;
+
     matriz[y][x] = 1
-    for (var i = 0; i < 100; i++) {
-        var dir = Math.random() * 3
-        if (dir == 0)
-            y -= 1
-        else if (dir == 1)
-            x += 1
-        else if (dir == 2)
-            y += 1
-        else if (dir == 3)
-            x -= 1
-        matriz[y][x] = 1
+    for (var i = 0; i < 10; i++) {
+        var dir = Math.floor(Math.random() * 4)
+        switch (dir) {
+            case 0:
+                y -= 1
+                break;
+            case 1:
+                x += 1
+                break;
+            case 2: 
+                y += 1
+                break;        
+            case 3: 
+                x -= 1
+                break;
+        }
+        matriz[y][x] = 1        
     }
-    return matriz
+    
+    for(var i = 0; i < 10; i++) { 
+        for( var j = 0; j < 10; j++){ 
+            if (matriz[i][j] != 1){
+                matriz[i][j] = 0; 
+                count++; 
+            }
+        }
+    }
+    console.log(count); 
+    if (count >= (10*10) * 0.50) { 
+        generateContinent(matriz); 
+
+    }
+    return matriz;
+}
+
+function drunkWalker(){
+// to-do fazer todo o drunkWalker rolar aqui dentro
 }
 
 
 
 function showMap(mapX, mapY) { //to-do incrementar funcao de tamanho X e Y no mapa
-    var map = generateMap(mapX);
     for (var i = 0; i < mapX; i++) {
         for (var j = 0; j < mapX; j++) {
             $('<label >' + map[i][j] + '</lavel><span>, <span>').appendTo($('#map'));
