@@ -1,6 +1,7 @@
 $(document).ready(function () {
     console.log('Digite generateMap');
     console.log('Está function que esta a preencher a matriz')
+    gera(matriz);
     showTypes();
 })
 
@@ -114,7 +115,26 @@ function generateContinent(matriz) {
     console.log(matriz)
     return matriz
 }
-generateContinent(generateMap(100))
+var matriz = generateContinent(generateMap(100))
+
+//Function que gera a matriz
+//Pra adicionar outras variantes só criar a classe no main.css 
+//
+function gera(matriz) {
+    for (var i = 0 ; i < matriz.length ; i++) {
+        $('<div id="coluna'+ i + '">').appendTo('#map');
+        for ( var j = 0 ; j < matriz.length; j++){
+            if (matriz[i][j] < 5){
+                $('<div class="mar"></div>').appendTo('#coluna'+ i)
+            }else if (matriz[i][j] <= 15 ){
+                $('<div class="terra"></div>').appendTo('#coluna'+ i)
+            } else if (matriz[i][j] <= 20 ) { 
+                $('<div class="montanha"></div>').appendTo('#coluna'+ i)
+            }
+        }
+        $('</div>').appendTo('#map');
+    }
+}
 
 function drunkWalker(){
 // to-do fazer todo o drunkWalker rolar aqui dentro

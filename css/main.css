@@ -1,5 +1,28 @@
 *, body, html { 
-    background-color: #333333;
+    background-color: #3b6b65;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#map { 
+    display: flex;
+    flex-direction: rpw;
+    width: 800px;
+    height: 800px;
+}
+
+.mar {
+    background-color: blue;
+    width: 3px;
+    height: 3px;
+}
+.terra{
+    background-color: #491b05;
+    width: 3px;
+    height: 3px;
+}
+.montanha {
+    background-color: cornsilk;
+    width: 3px;
+    height: 3px;
 }
