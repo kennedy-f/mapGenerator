@@ -1,15 +1,15 @@
 $(document).ready(function () {
     console.log('Digite generateMap');
     console.log('Está function que esta a preencher a matriz')
-    showTypes(); 
+    showTypes();
 })
 
 
 //Types 
-var types = ['forest', 'mountain', 'plain', 'citie', 'water','cave','desert','lava'];
+var types = ['forest', 'mountain', 'plain', 'citie', 'water', 'cave', 'desert', 'lava'];
 
 function showTypes() {
-    types.map(dado => $("<label>" + dado + ",  </label><span> </span>" ).appendTo($("#selectedTypes")));
+    types.map(dado => $("<label>" + dado + ",  </label><span> </span>").appendTo($("#selectedTypes")));
 }
 
 function deleteTypes() {
@@ -38,7 +38,7 @@ function addGroundType(event) {
 }
 
 //Map 
-function createArray2D(rows){
+function createArray2D(rows) {
     var arr = [];
     for (var i = 0; i < rows; i++) {
         arr[i] = [];
@@ -47,43 +47,82 @@ function createArray2D(rows){
 }
 
 
-function generateMap(size){
+function generateMap(size) {
     var matriz = createArray2D(size);
-    for (var i = 0 ; i< size; i++){
-        for(var j = 0; j < size; j++ ){
+    for (var i = 0; i < size; i++) {
+        for (var j = 0; j < size; j++) {
             matriz[i][j] = [] //types[Math.floor(Math.random() * types.length)];
         }
     }
-    return matriz; 
+    return matriz;
 }
 
 //desculpa
-function generateContinent(matriz){
+
+function generateContinent(matriz) {
     //usando drunkenwalker
-    var y=Math.random(),x = Math.random();
-    matriz[y][x] = 1
-    for (var i = 0;i<100;i++){
-        var dir = Math.random() * 3
-        if (dir == 0)
-        y-=1
-        else if (dir == 1)
-        x+=1
-        else if (dir == 2)
-        y+=1
-        else if (dir == 3)
-        x-=1
-        matriz[y][x] = 1
+    var y = 0;
+    var x = 0;
+    var variacao = Array (-2,-1,0,1,2);
+    var feijoada
+    var ovo
+    var salada
+    var carne
+
+    matriz[y][x] = -10
+
+    for (var i = 1;i<matriz.length;i++){
+        ovo = Math.floor (Math.random() * 5);
+        x += 1;
+        salada = matriz[y][x-1] + variacao[ovo]
+        if (salada < -10)
+        salada = -10
+        else if (salada > 10)
+        salada = 10
+        matriz[y][x] = salada
     }
+
+    y = 0
+    x = 0
+
+    for (var i = 1;i<matriz.length[0];i++){
+        ovo = Math.floor (Math.random() * 5);
+        y+=1
+        salada = matriz[y][x] + variacao[ovo]
+        if (salada < -10)
+        salada = -10
+        else if (salada > 10)
+        salada = 10
+        matriz[y][x] = salada
+    }
+
+    for (var ytemp = 1; i < matriz.length;ytemp++){
+        for (var xtemp = 1; i < matriz[0].length;xtemp++){
+            ovo = Math.floor (Math.random() * 5);
+            salada = matriz[ytemp][xtemp-1]
+            carne = matriz[ytemp-1][xtemp]
+            feijoada = (carne + salada)/2 + variacao[ovo]
+            if (feijoada < -10)
+            feijoada = -10
+            else if (feijoada > 10)
+            feijoada = 10
+            matriz[y][x] = feijoada
+        }
+    }
+
     return matriz
+}
+
+function drunkWalker(){
+// to-do fazer todo o drunkWalker rolar aqui dentro
 }
 
 
 
-function showMap(mapX, mapY){ //to-do incrementar funcao de tamanho X e Y no mapa
-    var map = generateMap(mapX);         
-    for (var i = 0; i < mapX; i++) { 
-        for (var j = 0; j < mapX; j++ ){             
-            $('<label >' + map[i][j]  + '</lavel><span>, <span>').appendTo($('#map'));
+function showMap(mapX, mapY) { //to-do incrementar funcao de tamanho X e Y no mapa
+    for (var i = 0; i < mapX; i++) {
+        for (var j = 0; j < mapX; j++) {
+            $('<label >' + map[i][j] + '</lavel><span>, <span>').appendTo($('#map'));
         }
         $('</br>').appendTo($('#map'));
     }
