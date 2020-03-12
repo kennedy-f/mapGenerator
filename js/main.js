@@ -60,8 +60,8 @@ function generateMap(size) {
 function heightNoise(matriz, maxHeight, minHeight){ 
     for(var i = 0; i < maxHeight; i++){
         for(var j = 0; j < minHeight; j++){
-            var a = Math.floor(Math.random() * (10 - 0) - 10);
-            var b = Math.floor(Math.random() * (10 - 0) + 0);            
+            var a = Math.floor(Math.random() * (15 - 0) - 15);
+            var b = Math.floor(Math.random() * (15 - 0) + 0);            
             var whoIs = Math.floor(Math.random() * 100) % 2;
             if (whoIs == 1){                          
                 matriz[i][j] = a;
