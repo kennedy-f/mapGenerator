@@ -57,61 +57,64 @@ function generateMap(size) {
     return matriz;
 }
 
-//desculpa
-
 function generateContinent(matriz) {
-    //usando drunkenwalker
     var y = 0;
     var x = 0;
-    var variacao = Array (-2,-1,0,1,2);
+    var i
+    var mar = 0
+    var topo = 20
+    var variacao = Array (-2,-1,0,1,2)
+    var batata = variacao.length
     var feijoada
     var ovo
     var salada
     var carne
+    matriz[y][x] = 0
 
-    matriz[y][x] = -10
 
-    for (var i = 1;i<matriz.length;i++){
-        ovo = Math.floor (Math.random() * 5);
+    for (i = 1;i<matriz.length;i++){
+        ovo = Math.floor (Math.random() * batata);
         x += 1;
         salada = matriz[y][x-1] + variacao[ovo]
-        if (salada < -10)
-        salada = -10
-        else if (salada > 10)
-        salada = 10
+        if (salada < mar)
+        salada = mar
+        else if (salada > topo)
+        salada = topo
         matriz[y][x] = salada
     }
-
+    
     y = 0
     x = 0
 
-    for (var i = 1;i<matriz.length[0];i++){
-        ovo = Math.floor (Math.random() * 5);
+    for (i = 1;i<matriz[0].length;i++){
+        ovo = Math.floor (Math.random() * batata);
         y+=1
-        salada = matriz[y][x] + variacao[ovo]
-        if (salada < -10)
-        salada = -10
-        else if (salada > 10)
-        salada = 10
+        salada = matriz[y-1][x] + variacao[ovo]
+        if (salada < mar)
+        salada = mar
+        else if (salada > topo)
+        salada = topo
         matriz[y][x] = salada
     }
 
-    for (var ytemp = 1; i < matriz.length;ytemp++){
-        for (var xtemp = 1; i < matriz[0].length;xtemp++){
-            ovo = Math.floor (Math.random() * 5);
+    for (var ytemp = 1; ytemp < matriz.length;ytemp++){
+        for (var xtemp = 1; xtemp < matriz[0].length;xtemp++){
+            ovo = Math.floor (Math.random() * batata);
             salada = matriz[ytemp][xtemp-1]
             carne = matriz[ytemp-1][xtemp]
-            feijoada = (carne + salada)/2 + variacao[ovo]
-            if (feijoada < -10)
-            feijoada = -10
-            else if (feijoada > 10)
-            feijoada = 10
-            matriz[y][x] = feijoada
+            feijoada = Math.floor((carne + salada)/2) + variacao[ovo]
+            if (feijoada < mar)
+            feijoada = mar
+            else if (feijoada > topo)
+            feijoada = topo
+            matriz[ytemp][xtemp] = feijoada
         }
     }
 
+    console.log(matriz)
     return matriz
 }
+generateContinent(generateMap(100))
 
 function drunkWalker(){
 // to-do fazer todo o drunkWalker rolar aqui dentro
