@@ -57,7 +57,7 @@ function generateMap(size){
     return matriz; 
 }
 
-//oi dlc
+//desculpa
 function generateContinent(matriz){
     //usando drunkenwalker
     var y=Math.random(),x = Math.random();
