@@ -64,14 +64,15 @@ function generateContinent(matriz) {
     var i
     var mar = 0
     var topo = 20
-    var variacao = Array (-2,-1,0,1,2)
+    var variacao = Array (-2,-1,0,1)
+    var arraymax = [-2,-1,-1,0,0,0,0,1,1,1,1,1,1,1,2,2,2]
+    var arraymin = [-2,-1,-1,-1,-1,0,0,0,1,1,1]
     var batata = variacao.length
     var feijoada
     var ovo
     var salada
     var carne
     matriz[y][x] = 0
-
 
     for (i = 1;i<matriz.length;i++){
         ovo = Math.floor (Math.random() * batata);
@@ -100,6 +101,16 @@ function generateContinent(matriz) {
 
     for (var ytemp = 1; ytemp < matriz.length;ytemp++){
         for (var xtemp = 1; xtemp < matriz[0].length;xtemp++){
+            
+            if (ytemp>=Math.floor(matriz.length/8) && xtemp>=Math.floor(matriz.length/8) 
+            && ytemp<=Math.floor(5*(matriz.length/8)) && xtemp<=Math.floor(5*(matriz.length/8))){
+            variacao = arraymax
+            }
+            else{
+            variacao = arraymin
+            }
+            batata = variacao.length
+
             ovo = Math.floor (Math.random() * batata);
             salada = matriz[ytemp][xtemp-1]
             carne = matriz[ytemp-1][xtemp]
@@ -115,7 +126,8 @@ function generateContinent(matriz) {
     console.log(matriz)
     return matriz
 }
-var matriz = generateContinent(generateMap(100))
+
+var matriz = generateContinent(generateMap(80))
 
 //Function que gera a matriz
 //Pra adicionar outras variantes só criar a classe no main.css 
