@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    console.log('Digite generateMap');
-    console.log('Está function que esta a preencher a matriz')
+    renderIsland(matriz);
     showTypes();
 })
 
@@ -34,7 +33,19 @@ function addGroundType(event) {
             return
         }
     }
+
 }
+
+
+function showMap() {
+    var mapSize = $("#mapSize").val();
+    var mapNoise = arrayFill(mapSize);
+
+    var island = generateIsland(mapNoise);
+
+    renderIsland(island);
+}
+
 
 //Map 
 function createArray2D(rows) {
@@ -46,7 +57,7 @@ function createArray2D(rows) {
 }
 
 
-function generateMap(size) {
+function arrayFill(size) {
     var matriz = createArray2D(size);
     for (var i = 0; i < size; i++) {
         for (var j = 0; j < size; j++) {
@@ -56,19 +67,10 @@ function generateMap(size) {
     return matriz;
 }
 
-//Gera por altura
-function heightNoise(matriz, maxHeight, minHeight){ 
-    for(var i = 0; i < maxHeight; i++){
-        for(var j = 0; j < minHeight; j++){
-            var a = Math.floor(Math.random() * (15 - 0) - 15);
-            var b = Math.floor(Math.random() * (15 - 0) + 0);            
-            var whoIs = Math.floor(Math.random() * 100) % 2;
-            if (whoIs == 1){                          
-                matriz[i][j] = a;
-            } else {                
-                matriz[i][j] = b;
-            }            
-        }
-    } 
-    return matriz; 
-}
+
+
+var matriz = generateIsland(arrayFill(80))
+
+//Function que gera a matriz
+//Pra adicionar outras variantes só criar a classe no main.css 
+//

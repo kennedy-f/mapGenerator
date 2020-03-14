@@ -1,5 +1,77 @@
 *, body, html { 
-    background-color: #333333;
+    background-color: #3b6b65;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#map { 
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+    height: 800px;
+}
+
+.deepSea{
+    background-color: blue;
+    width: 5px;
+    height: 5px;
+}
+
+.coast { 
+    background-color: #7171f5;
+    width: 5px;
+    height: 5px;
+}
+
+.sand { 
+    background-color: #f6e894;
+    width: 5px;
+    height: 5px;
+}
+
+.earth{
+    background-color: #722603;
+    width: 5px;
+    height: 5px;
+}
+
+.florest{ 
+    background-color: #2baa11;
+    width: 5px;
+    height: 5px;
+}
+.darkFlorest{ 
+    background-color: #1c6d0c;
+    width: 5px;
+    height: 5px;
+}
+.mountainFoot1 { 
+    background-color: #9b9b9b;
+    width: 5px;
+    height: 5px;
+}
+.mountainFoot2 { 
+    background-color: #a8a8a8;
+    width: 5px;
+    height: 5px;
+}
+.mountainFoot3 { 
+    background-color: #cccccc;
+    width: 5px;
+    height: 5px;
+}
+.mountainFoot4 { 
+    background-color: #cccccc;
+    width: 5px;
+    height: 5px;
+}
+.mountain {
+    background-color: #ebebeb;
+    width: 5px;
+    height: 5px;
+}
+.needPainted {     
+    width: 5px;
+    height: 5px;
+}
 }
