@@ -69,19 +69,61 @@ function generateIsland(matriz) {
 }
 
 function renderIsland(matriz) {
+    console.log(matriz)
     $("#map").html("")
     for (var i = 0; i < matriz.length; i++) {
         $('<div id="coluna' + i + '">').appendTo('#map');
-        for (var j = 0; j < matriz.length; j++) {
-            if (matriz[i][j] < 5) {
-                $('<div class="mar"></div>').appendTo('#coluna' + i)
-            } else if (matriz[i][j] <= 15) {
-                $('<div class="terra"></div>').appendTo('#coluna' + i)
-            } else if (matriz[i][j] <= 20) {
-                $('<div class="montanha"></div>').appendTo('#coluna' + i)
+        for (var j = 0; j < matriz.length; j++) {  
+            $('<div id="pos'+ i + 'x' + j + '"class=""></div>').appendTo('#coluna' + i)
+            var pos = matriz[i][j]; 
+            if (pos <= 1) {
+                $('#pos'+ i + 'x' + j).addClass("deepSea")
+            } else if (pos <= 4) {
+                $('#pos'+ i + 'x' + j).addClass("coast")
+            } else if (pos <= 6) {
+                $('#pos' + i + 'x' + j).addClass("sand")
+            }  else if (pos < 11) {
+                $('#pos' + i + 'x' + j).addClass("earth")
+            } else if (pos >= 11 && pos <= 13) {
+                $('#pos' + i + 'x' + j).addClass("florest")
+            } else if (pos > 13 && pos < 16) {
+                $('#pos' + i + 'x' + j).addClass("darkFlorest")
+            } else if (pos == 16) {
+                $('#pos' + i + 'x' + j).addClass("mountainFoot1")
+            } else if (pos == 17) {
+                $('#pos' + i + 'x' + j).addClass("mountainFoot2")
+            } else if (pos == 18) {
+                $('#pos' + i + 'x' + j).addClass("mountainFoot3")
+            } else if (pos == 19) {
+                $('#pos' + i + 'x' + j).addClass("mountainFoot4")
+            } else if (pos == 20) {
+                $('#pos' + i + 'x' + j).addClass("mountain")
+            } else {
+                console.log('como')   
             }
         }
         $('</div>').appendTo('#map');
-    }
+    }      
 
 }
+// if (matriz[i][j] <= 1) {
+//     $('<div class="deepSea"></div>').appendTo('#coluna' + i)
+// } else if (matriz[i][j] <= 4) {
+//     $('<div class="coast"></div>').appendTo('#coluna' + i)
+// } else if (matriz[i][j] <= 6) {
+//     $('<div class="sand"></div>').appendTo('#coluna' + i)
+// } else if (matriz[i][j] <= 15) {
+//     $('<div class="earth"></div>').appendTo('#coluna' + i)
+// } else if (matriz[i][j] == 16) {
+//     $('<div class="mountainFoot"></div>').appendTo('#coluna' + i)
+// } else if (matriz[i][j] == 17) {
+//     $('<div class="mountainFoot2"></div>').appendTo('#coluna' + i)
+// } else if (matriz[i][j] == 18) {
+//     $('<div class="mountainFoot3"></div>').appendTo('#coluna' + i)
+// } else if (matriz[i][j] == 19) {
+//     $('<div class="mountainFoot4"></div>').appendTo('#coluna' + i)
+// } else if (matriz[i][j] == 20) {
+//     $('<div class="mountain"></div>').appendTo('#coluna' + i)
+// } else {
+//     $('<div class="deepSea"></div>').appendTo('#coluna' + i)
+// }
