@@ -6,15 +6,20 @@ function generateIsland(matriz) {
     var i
     var mar = 0
     var topo = 20
-    var variacao = Array(-2, -1, 0, 1)
-    var arraymax = [-2, -1, -1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2]
-    var arraymin = [-2, -1, -1, -1, -1, 0, 0, 0, 1, 1, 1]
+    var arraymax = [-2,-1, 0, 0, 0, 1, 1, 1, 2, 2]
+    var arraymed = [-1,-1, 0, 0, 1, 1]    
+    var arraymin = [-2,-2,-1,-1,-1, 0, 0, 0, 1, 2]
+    var variacao = arraymed
     var batata = variacao.length
     var feijoada
     var ovo
     var salada
     var carne
     matriz[y][x] = 0
+
+    function proporcao(divisao){
+        return Math.floor(matriz.length * divisao)
+    }
 
     for (i = 1; i < matriz.length; i++) {
         ovo = Math.floor(Math.random() * batata);
@@ -44,13 +49,26 @@ function generateIsland(matriz) {
     for (var ytemp = 1; ytemp < matriz.length; ytemp++) {
         for (var xtemp = 1; xtemp < matriz[0].length; xtemp++) {
 
-            if (ytemp >= Math.floor(matriz.length / 8) && xtemp >= Math.floor(matriz.length / 8)
-                && ytemp <= Math.floor(5 * (matriz.length / 8)) && xtemp <= Math.floor(5 * (matriz.length / 8))) {
+            if (ytemp >= proporcao(1/10) && xtemp >= proporcao(1/10)
+                && ytemp < proporcao(2/10) && xtemp < proporcao(8/10)) {
                 variacao = arraymax
             }
-            else {
+            else if (ytemp >= proporcao(1/10) && xtemp >= proporcao(1/10)
+                && ytemp < proporcao(7/10) && xtemp < proporcao(2/10)) {
+                variacao = arraymax
+            }
+            else if (ytemp >= proporcao(2/10) && xtemp >= proporcao(7/10)
+                && ytemp < proporcao(8/10) && xtemp < proporcao(8/10)) {
                 variacao = arraymin
             }
+            else if (ytemp >= proporcao(7/10) && xtemp >= proporcao(1/10)
+                && ytemp < proporcao(8/10) && xtemp < proporcao(8/10)) {
+                variacao = arraymin
+            }
+            else {
+                variacao = arraymed
+            }
+
             batata = variacao.length
 
             ovo = Math.floor(Math.random() * batata);
