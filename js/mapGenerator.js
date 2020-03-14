@@ -6,9 +6,12 @@ function generateIsland(matriz) {
     var i
     var mar = 0
     var topo = 20
-    var arraymax = [-2,-1, 0, 0, 0, 1, 1, 1, 2, 2]
-    var arraymed = [-1,-1, 0, 0, 1, 1]    
-    var arraymin = [-2,-2,-1,-1,-1, 0, 0, 0, 1, 2]
+    var arraymax = [-1,0,0,1,1,2]
+    var arraymed = [-1,0,0,1,1]
+    var arraymin = [-2,-1,-1,0,0,1]
+    //var arraymax = [10]
+    //var arraymed = [-10]
+    //var arraymin = [10]
     var variacao = arraymed
     var batata = variacao.length
     var feijoada
@@ -17,8 +20,8 @@ function generateIsland(matriz) {
     var carne
     matriz[y][x] = 0
 
-    function proporcao(divisao){
-        return Math.floor(matriz.length * divisao)
+    function proporcao(multiplicacao){
+        return Math.floor(multiplicacao * matriz.length / 10)
     }
 
     for (i = 1; i < matriz.length; i++) {
@@ -48,26 +51,34 @@ function generateIsland(matriz) {
 
     for (var ytemp = 1; ytemp < matriz.length; ytemp++) {
         for (var xtemp = 1; xtemp < matriz[0].length; xtemp++) {
+            
+            variacao = arraymed
 
-            if (ytemp >= proporcao(1/10) && xtemp >= proporcao(1/10)
-                && ytemp < proporcao(2/10) && xtemp < proporcao(8/10)) {
+            if (ytemp >= proporcao(2))
+            if (ytemp < proporcao(6))
+            if (xtemp >= proporcao(2)) 
+            if (xtemp < proporcao(4))
                 variacao = arraymax
-            }
-            else if (ytemp >= proporcao(1/10) && xtemp >= proporcao(1/10)
-                && ytemp < proporcao(7/10) && xtemp < proporcao(2/10)) {
+
+            if (ytemp >= proporcao(2)) 
+            if (ytemp < proporcao(4))
+            if (xtemp >= proporcao(2)) 
+            if (xtemp < proporcao(6))
                 variacao = arraymax
-            }
-            else if (ytemp >= proporcao(2/10) && xtemp >= proporcao(7/10)
-                && ytemp < proporcao(8/10) && xtemp < proporcao(8/10)) {
+
+            if (ytemp >= proporcao(8))
+            if (ytemp < proporcao(9)) 
+            if (xtemp >= proporcao(2))
+            if (xtemp < proporcao(9))
                 variacao = arraymin
-            }
-            else if (ytemp >= proporcao(7/10) && xtemp >= proporcao(1/10)
-                && ytemp < proporcao(8/10) && xtemp < proporcao(8/10)) {
+
+            if (ytemp >= proporcao(2))
+            if (ytemp < proporcao(9))
+            if (xtemp >= proporcao(8)) 
+            if (xtemp < proporcao(9))
                 variacao = arraymin
-            }
-            else {
-                variacao = arraymed
-            }
+
+
 
             batata = variacao.length
 
