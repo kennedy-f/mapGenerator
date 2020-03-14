@@ -23,16 +23,23 @@ defaulConf = {
 function generateIsland(matriz) {     
     var y = 0;
     var x = 0;
-    var sea = 0; 
-    var top = 20; 
-    var i, avarage; 
-    var feijoada, ovo, salada, carne; 
-    var rdn; 
-    var maxrange = [-2, -1, -1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2]; 
-    var minrange = [-2, -1, -1, -1, -1, 0, 0, 0, 1, 1, 1];
-    var variation = [-2, -1, 0, 1]; 
+    var i
+    var mar = 0
+    var topo = 20
+    var arraymax = [-2,-1, 0, 0, 0, 1, 1, 1, 2, 2]
+    var arraymed = [-1,-1, 0, 0, 1, 1]    
+    var arraymin = [-2,-2,-1,-1,-1, 0, 0, 0, 1, 2]
+    var variacao = arraymed
+    var batata = variacao.length
+    var feijoada
+    var ovo
+    var salada
+    var carne
+    matriz[y][x] = 0
 
-    matriz[y][x] = 0; 
+    function proporcao(divisao){
+        return Math.floor(matriz.length * divisao)
+    }
 
     for (i = 1; i < matriz.length; i++) {
         rdn = Math.floor(Math.random() * variation.length)
@@ -57,25 +64,40 @@ function generateIsland(matriz) {
         matriz[y][x] = salada; 
     }
 
-    for (var ytemp = 1; ytemp < matriz.length; ytemp++) { 
-        for (var xtemp = 1; xtemp < matriz[0].length; xtemp++) { 
-            if (ytemp >= Math.floor(matriz.length / 8)
-            && xtemp >= Math.floor(matriz.length / 8)
-            && ytemp <= Math.floor(5 * (matriz.length / 8))
-            && xtemp <= Math.floor(5 * (matriz.length / 8))) {
-                variation = maxrange; 
-            } else {
-                variation = minrange; 
+    for (var ytemp = 1; ytemp < matriz.length; ytemp++) {
+        for (var xtemp = 1; xtemp < matriz[0].length; xtemp++) {
+
+            if (ytemp >= proporcao(1/10) && xtemp >= proporcao(1/10)
+                && ytemp < proporcao(2/10) && xtemp < proporcao(8/10)) {
+                variacao = arraymax
             }
-            rdn = Math.floor(Math.random() * variation.length); 
-            salada = matriz[ytemp][xtemp -1]; 
-            carne = matriz[ytemp - 1][xtemp]; 
-            avarage = Math.floor((carne + salada) / 2 ) + variation[rdn]
-            if (avarage < sea)
-                avarage = sea 
-            else if (avarage > top)
-                avarage = top
-            matriz[ytemp][xtemp] = avarage; 
+            else if (ytemp >= proporcao(1/10) && xtemp >= proporcao(1/10)
+                && ytemp < proporcao(7/10) && xtemp < proporcao(2/10)) {
+                variacao = arraymax
+            }
+            else if (ytemp >= proporcao(2/10) && xtemp >= proporcao(7/10)
+                && ytemp < proporcao(8/10) && xtemp < proporcao(8/10)) {
+                variacao = arraymin
+            }
+            else if (ytemp >= proporcao(7/10) && xtemp >= proporcao(1/10)
+                && ytemp < proporcao(8/10) && xtemp < proporcao(8/10)) {
+                variacao = arraymin
+            }
+            else {
+                variacao = arraymed
+            }
+
+            batata = variacao.length
+
+            ovo = Math.floor(Math.random() * batata);
+            salada = matriz[ytemp][xtemp - 1]
+            carne = matriz[ytemp - 1][xtemp]
+            feijoada = Math.floor((carne + salada) / 2) + variacao[ovo]
+            if (feijoada < mar)
+                feijoada = mar
+            else if (feijoada > topo)
+                feijoada = topo
+            matriz[ytemp][xtemp] = feijoada
         }
     }
     return matriz; 
