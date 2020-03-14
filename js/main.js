@@ -40,9 +40,7 @@ function addGroundType(event) {
 function showMap() {
     var mapSize = $("#mapSize").val();
     var mapNoise = arrayFill(mapSize);
-
     var island = generateIsland(mapNoise);
-
     renderIsland(island);
 }
 
