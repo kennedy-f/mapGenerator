@@ -1,4 +1,8 @@
 ﻿# Map Generator 
-Ainda em construção. <br> 
+Under construct <br> 
 <br> 
-##Gerador de mapas 
+##The map generator 
+
+#This project will use JS for create random maps
+
+
