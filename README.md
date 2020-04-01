@@ -1,6 +1,5 @@
 ﻿# Map Generator 
 
-<h1> Map generator </h1>
 
 <h4> This project use Javascript to render random maps </h4> 
 
